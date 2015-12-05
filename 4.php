@@ -1,12 +1,17 @@
 <?php
-$input = "abcdef";
-$i = 1;
-// echo "øh";
-// echo $i++;
-while($i++){
-	if(substr(md5($input),0,4) == "0000"){
-		die($i);
+echo phpversion();
+die();
+function adventCoinHash($input, $zeros = 5){
+	$i = 1;
+	$compare = str_repeat("0",$zeros);
+	while($i++){
+		if(substr(md5($input.$i),0,5) === $compare){
+			return $i.", ".md5($input.$i);
+		}
 	}
 }
-// echo "yo!";
+$input = "bgvyzdsv";
+// echo adventCoinHash("pqrstuv");
+// echo adventCoinHash($input);
+echo adventCoinHash($input,6);
 ?>
